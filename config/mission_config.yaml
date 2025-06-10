@@ -1,0 +1,196 @@
+# Bridge Inspector Mission Configuration
+# This file contains all configurable parameters for autonomous inspection missions
+
+# Vehicle Connection Settings
+connection:
+  type: "mavlink"
+  address: "udp:127.0.0.1:14550"  # Default for SITL
+  # address: "/dev/ttyUSB0"       # For serial connection
+  # address: "tcp:192.168.1.100:5760"  # For network connection
+  baud_rate: 921600               # For serial connections
+  timeout: 30                     # Connection timeout in seconds
+
+# Safety Parameters
+safety:
+  min_battery_percent: 30         # RTL when battery drops below this
+  critical_battery_percent: 20    # Emergency land below this
+  max_wind_speed: 10              # m/s - abort if wind exceeds
+  min_gps_satellites: 8           # Minimum GPS satellites required
+  max_hdop: 2.5                   # Maximum horizontal dilution of precision
+  geofence_radius: 500            # meters from home
+  max_altitude: 120               # meters - regulatory limit
+  min_altitude: 5                 # meters - minimum safe altitude
+  obstacle_clearance: 5           # meters - minimum distance from obstacles
+  rtl_altitude: 50                # meters - return to launch altitude
+
+# Flight Parameters
+flight:
+  takeoff_altitude: 30            # meters - default takeoff altitude
+  inspection_speed: 2.0           # m/s - speed during inspection
+  transit_speed: 5.0              # m/s - speed between waypoints
+  max_velocity: 10.0              # m/s - maximum allowed velocity
+  hover_time: 2.0                 # seconds - default hover at waypoints
+  position_tolerance: 2.0         # meters - waypoint reached tolerance
+  yaw_rate: 30                    # degrees/second - rotation rate
+
+# Camera Configuration
+camera:
+  horizontal_fov: 84              # degrees - camera horizontal field of view
+  vertical_fov: 53                # degrees - camera vertical field of view
+  resolution_width: 4000          # pixels
+  resolution_height: 3000         # pixels
+  sensor_width: 36                # mm - camera sensor width
+  focal_length: 24                # mm - lens focal length
+  min_focus_distance: 0.5         # meters
+  capture_delay: 2.0              # seconds - delay after triggering
+  gimbal_available: true          # whether gimbal control is available
+  gimbal_pitch_min: -90           # degrees
+  gimbal_pitch_max: 30            # degrees
+
+# Inspection Pattern Parameters
+inspection:
+  default_pattern: "grid"         # grid, spiral, facade, zigzag, etc.
+  image_overlap: 0.7              # 70% overlap between images
+  detail_levels:
+    high:
+      overlap: 0.8                # 80% overlap for detailed inspection
+      distance_factor: 0.7        # Closer to structure
+      hover_time: 3.0
+    normal:
+      overlap: 0.7
+      distance_factor: 1.0
+      hover_time: 2.0
+    low:
+      overlap: 0.5                # 50% overlap for quick survey
+      distance_factor: 1.5        # Further from structure
+      hover_time: 1.0
+
+# Defect Detection Settings
+defect_detection:
+  enabled: true
+  confidence_threshold: 0.7       # Minimum confidence to report defect
+  model_path: "models/defect_model.pth"  # Path to AI model
+  process_onboard: false          # Process images during flight
+  severity_thresholds:
+    crack:
+      minor:
+        width: 0.3                # mm
+        length: 50                # mm
+      moderate:
+        width: 1.0
+        length: 200
+      severe:
+        width: 3.0
+        length: 500
+      critical:
+        width: 5.0
+        length: 1000
+    spalling:
+      minor:
+        area: 100                 # mm²
+      moderate:
+        area: 1000
+      severe:
+        area: 10000
+      critical:
+        area: 50000
+    corrosion:
+      minor:
+        area: 100
+      moderate:
+        area: 1000
+      severe:
+        area: 10000
+      critical:
+        area: 50000
+
+# Data Storage Configuration
+storage:
+  base_directory: "data"
+  image_directory: "data/images"
+  log_directory: "data/logs"
+  report_directory: "data/reports"
+  telemetry_directory: "data/telemetry"
+  auto_organize: true             # Organize by date/mission
+  compress_images: false          # Compress images after capture
+  compression_quality: 85         # JPEG quality if compressing
+
+# Reporting Configuration
+reporting:
+  generate_html: true
+  generate_pdf: true
+  generate_csv: true
+  generate_json: true
+  include_images: true
+  max_images_in_report: 50
+  email_enabled: false
+  email_recipients: []
+  upload_to_cloud: false
+  cloud_endpoint: ""
+
+# Mission Planning
+mission_planning:
+  auto_home_detection: true       # Detect home from current position
+  use_terrain_data: true          # Use terrain following if available
+  terrain_margin: 10              # meters above terrain
+  optimize_path: true             # Optimize waypoint order
+  split_large_missions: true      # Split if too many waypoints
+  max_waypoints_per_mission: 500
+  continue_on_failure: false      # Continue mission if non-critical failure
+
+# Emergency Procedures
+emergency:
+  loss_of_gps:
+    action: "land"                # land, loiter, or manual
+    timeout: 30                   # seconds before action
+  loss_of_telemetry:
+    action: "continue"            # continue, rtl, or land
+    timeout: 60
+  battery_critical:
+    action: "land"                # immediate landing
+  obstacle_detected:
+    action: "brake"               # brake, avoid, or rtl
+    avoidance_distance: 10        # meters
+  vibration_excessive:
+    threshold: 60                 # vibration level
+    action: "rtl"
+
+# Logging Configuration
+logging:
+  level: "INFO"                   # DEBUG, INFO, WARNING, ERROR
+  file_logging: true
+  console_logging: true
+  telemetry_logging: true
+  log_rotation: true
+  max_log_size: 100               # MB
+  max_log_files: 10
+  detailed_telemetry: false       # Log all MAVLink messages
+
+# Performance Tuning
+performance:
+  mavlink_rate: 4                 # Hz - data stream rate
+  position_update_rate: 10        # Hz - position control rate
+  image_processing_threads: 4     # Parallel processing threads
+  max_memory_usage: 2048          # MB - max memory for processing
+  gpu_acceleration: true          # Use GPU if available
+
+# Weather Limits
+weather:
+  max_wind_speed: 10              # m/s
+  max_gust_speed: 15              # m/s
+  min_temperature: -10            # Celsius
+  max_temperature: 45             # Celsius
+  max_precipitation: 0            # mm/hour - no flight in rain
+  min_visibility: 1000            # meters
+
+# Pre-flight Checks
+preflight:
+  check_weather: true
+  check_airspace: false           # Check for TFRs/NOTAMs
+  check_battery_health: true
+  min_battery_voltage: 14.8       # Volts (4S battery)
+  check_gps_accuracy: true
+  check_compass_health: true
+  check_imu_health: true
+  calibrate_compass: false        # Auto-calibrate if needed
+  verify_parameters: true         # Verify critical params

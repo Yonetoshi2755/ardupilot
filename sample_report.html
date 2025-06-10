@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Structure Inspection Report - 2024-01-10 14:30:22</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #2c3e50; color: white; padding: 20px; }
+        .summary { background-color: #ecf0f1; padding: 15px; margin: 20px 0; }
+        .defect { border: 1px solid #bdc3c7; margin: 10px 0; padding: 10px; }
+        .critical { border-color: #e74c3c; background-color: #ffe6e6; }
+        .severe { border-color: #e67e22; background-color: #fff2e6; }
+        .moderate { border-color: #f39c12; background-color: #fffbe6; }
+        .minor { border-color: #27ae60; background-color: #e6ffe6; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        .stat-card { background: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #34495e; color: white; }
+        .map { width: 100%; height: 400px; background: #f0f0f0; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Structure Inspection Report</h1>
+        <p>Generated: 2024-01-10 14:30:22</p>
+        <p>Structure: Golden Gate Bridge - North Section</p>
+    </div>
+    
+    <div class="summary">
+        <h2>Executive Summary</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Defects</h3>
+                <p style="font-size: 24px; color: #e74c3c;">7</p>
+            </div>
+            <div class="stat-card">
+                <h3>Critical Issues</h3>
+                <p style="font-size: 24px; color: #c0392b;">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Inspection Duration</h3>
+                <p style="font-size: 24px;">15.3 min</p>
+            </div>
+            <div class="stat-card">
+                <h3>Coverage</h3>
+                <p style="font-size: 24px;">100%</p>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Inspection Flight Path</h2>
+    <div class="map">
+        <p style="text-align: center; padding-top: 180px; color: #666;">
+            [Interactive Map Showing Zigzag Pattern Over Bridge]<br>
+            • Blue line: Flight path<br>
+            • Red markers: Defect locations<br>
+            • Green marker: Home position
+        </p>
+    </div>
+    
+    <h2>Detected Defects</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Severity</th>
+            <th>Location</th>
+            <th>Confidence</th>
+            <th>Dimensions</th>
+            <th>Notes</th>
+        </tr>
+        <tr class="severe">
+            <td>1</td>
+            <td>Corrosion</td>
+            <td>SEVERE</td>
+            <td>(37.820234, -122.478456)</td>
+            <td>92%</td>
+            <td>Area: 2500mm²</td>
+            <td>Significant rust on support beam - immediate attention required</td>
+        </tr>
+        <tr class="moderate">
+            <td>2</td>
+            <td>Crack</td>
+            <td>MODERATE</td>
+            <td>(37.819987, -122.478234)</td>
+            <td>95%</td>
+            <td>W: 1.5mm, L: 320mm</td>
+            <td>Longitudinal crack on pier base</td>
+        </tr>
+        <tr class="moderate">
+            <td>3</td>
+            <td>Crack</td>
+            <td>MODERATE</td>
+            <td>(37.820123, -122.478567)</td>
+            <td>88%</td>
+            <td>W: 1.2mm, L: 280mm</td>
+            <td>Transverse crack on deck underside</td>
+        </tr>
+        <tr class="moderate">
+            <td>4</td>
+            <td>Crack</td>
+            <td>MODERATE</td>
+            <td>(37.820456, -122.478901)</td>
+            <td>91%</td>
+            <td>W: 1.8mm, L: 410mm</td>
+            <td>Diagonal crack near expansion joint</td>
+        </tr>
+        <tr class="minor">
+            <td>5</td>
+            <td>Spalling</td>
+            <td>MINOR</td>
+            <td>(37.819876, -122.478123)</td>
+            <td>87%</td>
+            <td>Area: 450mm²</td>
+            <td>Minor concrete spalling on deck surface</td>
+        </tr>
+        <tr class="minor">
+            <td>6</td>
+            <td>Crack</td>
+            <td>MINOR</td>
+            <td>(37.820345, -122.478789)</td>
+            <td>79%</td>
+            <td>W: 0.4mm, L: 85mm</td>
+            <td>Hairline crack - monitor only</td>
+        </tr>
+        <tr class="minor">
+            <td>7</td>
+            <td>Spalling</td>
+            <td>MINOR</td>
+            <td>(37.820012, -122.478456)</td>
+            <td>82%</td>
+            <td>Area: 320mm²</td>
+            <td>Surface deterioration - cosmetic</td>
+        </tr>
+    </table>
+    
+    <h2>Defect Examples</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div class="defect severe">
+            <div style="height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                [Corrosion Image]
+            </div>
+            <p><strong>Severe Corrosion</strong></p>
+            <p>Support beam showing significant rust penetration</p>
+        </div>
+        <div class="defect moderate">
+            <div style="height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                [Crack Image]
+            </div>
+            <p><strong>Moderate Crack</strong></p>
+            <p>1.5mm width crack requiring repair</p>
+        </div>
+        <div class="defect minor">
+            <div style="height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                [Spalling Image]
+            </div>
+            <p><strong>Minor Spalling</strong></p>
+            <p>Surface concrete deterioration</p>
+        </div>
+    </div>
+    
+    <h2>Recommendations</h2>
+    <ul>
+        <li><strong>URGENT:</strong> 1 severe corrosion issue detected. Immediate structural assessment and repairs recommended.</li>
+        <li>3 moderate cracks require attention within 30 days. Schedule detailed engineering assessment.</li>
+        <li>3 minor defects should be monitored. Plan repairs within 6 months.</li>
+        <li>Total of 7 defects found. Update maintenance database and track progression.</li>
+        <li>100.0% inspection coverage achieved.</li>
+    </ul>
+    
+    <h2>Mission Statistics</h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h4>Flight Time</h4>
+            <p>15.3 minutes</p>
+        </div>
+        <div class="stat-card">
+            <h4>Distance Flown</h4>
+            <p>2.3 km</p>
+        </div>
+        <div class="stat-card">
+            <h4>Max Altitude</h4>
+            <p>35 m</p>
+        </div>
+        <div class="stat-card">
+            <h4>Waypoints</h4>
+            <p>25/25 completed</p>
+        </div>
+        <div class="stat-card">
+            <h4>Images Captured</h4>
+            <p>75</p>
+        </div>
+        <div class="stat-card">
+            <h4>Battery Used</h4>
+            <p>22%</p>
+        </div>
+        <div class="stat-card">
+            <h4>Avg Wind Speed</h4>
+            <p>3.2 m/s</p>
+        </div>
+        <div class="stat-card">
+            <h4>GPS Accuracy</h4>
+            <p>HDOP: 1.2</p>
+        </div>
+    </div>
+    
+    <div style="margin-top: 50px; padding: 20px; background-color: #ecf0f1;">
+        <p><small>This report was automatically generated by the ArduCopter Bridge Inspector system.</small></p>
+        <p><small>For questions about this report, contact: inspection@example.com</small></p>
+    </div>
+</body>
+</html>

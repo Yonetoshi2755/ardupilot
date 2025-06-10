@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Virtual Environment
+bin/
+include/
+lib/
+lib64/
+share/
+pyvenv.cfg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
+data/images/*
+data/logs/*
+data/reports/*
+data/telemetry/*
+models/*.pth
+models/*.pt
+models/*.onnx
+
+# Keep directory structure
+!data/images/.gitkeep
+!data/logs/.gitkeep
+!data/reports/.gitkeep
+!data/telemetry/.gitkeep
+!models/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+
+# Test outputs
+test_results/
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/

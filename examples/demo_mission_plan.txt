@@ -1,0 +1,71 @@
+# Bridge Inspector Demo Mission Plan
+# Golden Gate Bridge Section Inspection
+# Pattern: Zigzag
+# Generated: 2025-01-06
+
+# Mission Summary
+# Total Waypoints: 25
+# Estimated Time: 8.5 minutes
+# Coverage Area: 200m x 27m
+# Flight Altitude: 30-50m
+# Image Overlap: 70%
+
+# Waypoint Format: WP# LAT LON ALT(m) YAW(deg) PITCH(deg) HOVER(s) DESCRIPTION
+
+# Takeoff and Initial Position
+WP1  37.8199  -122.4783  30  0    0   5   Takeoff and stabilize
+WP2  37.8195  -122.4785  30  90   0   2   Transit to start position
+
+# Lower Level Inspection (Alt: 30m)
+WP3  37.8195  -122.4785  30  90   -30  2   Lower deck start
+WP4  37.8195  -122.4784  30  90   -30  2   Lower deck scan 1
+WP5  37.8195  -122.4783  30  90   -30  2   Lower deck scan 2
+WP6  37.8196  -122.4783  30  270  -30  2   Turn point
+WP7  37.8196  -122.4784  30  270  -30  2   Lower deck return 1
+WP8  37.8196  -122.4785  30  270  -30  2   Lower deck return 2
+
+# Mid Level Inspection (Alt: 40m)
+WP9  37.8196  -122.4785  40  90   0   2   Ascend to mid level
+WP10 37.8195  -122.4785  40  90   0   2   Mid level start
+WP11 37.8195  -122.4784  40  90   0   2   Mid level scan 1
+WP12 37.8195  -122.4783  40  90   0   2   Mid level scan 2
+WP13 37.8196  -122.4783  40  270  0   2   Turn point
+WP14 37.8196  -122.4784  40  270  0   2   Mid level return 1
+WP15 37.8196  -122.4785  40  270  0   2   Mid level return 2
+
+# Upper Level Inspection (Alt: 50m)
+WP16 37.8196  -122.4785  50  90   30  2   Ascend to upper level
+WP17 37.8195  -122.4785  50  90   30  2   Upper deck start
+WP18 37.8195  -122.4784  50  90   30  2   Upper deck scan 1
+WP19 37.8195  -122.4783  50  90   30  2   Upper deck scan 2
+WP20 37.8196  -122.4783  50  270  30  2   Turn point
+WP21 37.8196  -122.4784  50  270  30  2   Upper deck return 1
+WP22 37.8196  -122.4785  50  270  30  2   Upper deck return 2
+
+# Detail Inspection Points
+WP23 37.8197  -122.4784  40  180  -45  3   Suspected crack location
+WP24 37.8198  -122.4783  35  180  -45  3   Joint inspection
+
+# Return to Launch
+WP25 37.8199  -122.4783  30  0    0   2   Return to home position
+
+# Mission Statistics
+# Total Distance: ~850m
+# Total Hover Time: 52 seconds
+# Transit Time: ~425 seconds @ 2m/s
+# Total Mission Time: ~8 minutes
+# Images Captured: ~25
+# Coverage: Complete lower, mid, and upper deck inspection
+
+# Safety Parameters
+# Min Battery for RTL: 30%
+# Max Wind Speed: 10 m/s
+# Geofence Radius: 500m
+# Structure Clearance: 10m minimum
+
+# Notes:
+# - Zigzag pattern ensures complete coverage of bridge deck
+# - Multiple altitude levels capture different structural elements
+# - Gimbal pitch adjusted for optimal viewing angle at each level
+# - Extra hover time at suspected defect locations
+# - Pattern can be interrupted and resumed if needed

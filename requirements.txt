@@ -1,0 +1,42 @@
+# Bridge Inspector Requirements
+# Python 3.8+
+
+# Core dependencies
+pymavlink>=2.4.40
+numpy>=1.21.0
+asyncio-mqtt>=0.16.1
+
+# Computer Vision and AI
+opencv-python>=4.7.0
+torch>=2.0.0
+torchvision>=0.15.0
+Pillow>=9.5.0
+
+# Data processing and visualization
+pandas>=1.5.0
+matplotlib>=3.6.0
+folium>=0.14.0
+jinja2>=3.1.0
+
+# Report generation
+reportlab>=3.6.0
+PyYAML>=6.0
+
+# Utilities
+python-dateutil>=2.8.2
+requests>=2.28.0
+typing-extensions>=4.5.0
+
+# Optional dependencies for enhanced features
+# scikit-learn>=1.2.0  # For advanced defect classification
+# tensorflow>=2.12.0   # Alternative to PyTorch
+# geopandas>=0.12.0   # For advanced geospatial analysis
+# boto3>=1.26.0       # For AWS S3 upload
+# google-cloud-storage>=2.7.0  # For Google Cloud upload
+
+# Development dependencies
+# pytest>=7.2.0
+# pytest-asyncio>=0.20.0
+# black>=23.0.0
+# flake8>=6.0.0
+# mypy>=1.0.0
