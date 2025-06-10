@@ -1,0 +1,25 @@
+#!/bin/bash
+# Bridge Inspector - Push Commands
+# Replace YOUR_USERNAME with your actual GitHub username
+
+echo "Bridge Inspector - Push to GitHub"
+echo "================================="
+echo ""
+echo "Replace YOUR_USERNAME in the commands below with your GitHub username"
+echo ""
+echo "Option 1: HTTPS (easier for beginners):"
+echo "---------------------------------------"
+echo "git remote add origin https://github.com/YOUR_USERNAME/bridge-inspector.git"
+echo "git branch -M main"
+echo "git push -u origin main"
+echo ""
+echo "Option 2: SSH (if you have SSH keys set up):"
+echo "--------------------------------------------"
+echo "git remote add origin git@github.com:YOUR_USERNAME/bridge-inspector.git"
+echo "git branch -M main"
+echo "git push -u origin main"
+echo ""
+echo "Example (if your username is 'johndoe'):"
+echo "git remote add origin https://github.com/johndoe/bridge-inspector.git"
+echo "git branch -M main"
+echo "git push -u origin main"
