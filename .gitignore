@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Project specific
+*.log
+*.jpg
+*.png
+*.mp4
+data/
+logs/
+.DS_Store
+models/
+cleanup_plan_*.json
+
+# ArduPilot SITL
+ardupilot/
+*.tlog
+*.tlog.raw
+eeprom.bin
+mav.parm
+terrain/

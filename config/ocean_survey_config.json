@@ -1,0 +1,127 @@
+{
+  "mission_name": "Pacific Ocean Plastic Survey",
+  "survey_areas": [
+    {
+      "name": "North Pacific Gyre - Section A1",
+      "bounds": {
+        "north": 35.0,
+        "south": 34.9,
+        "east": -145.0,
+        "west": -145.1
+      },
+      "priority": "high",
+      "notes": "Known accumulation zone",
+      "ocean_depth": 4500,
+      "typical_conditions": {
+        "wave_height_avg": 1.5,
+        "current_speed": 0.5,
+        "current_direction": 45
+      }
+    },
+    {
+      "name": "Coastal Accumulation Zone B2",
+      "bounds": {
+        "north": 34.8,
+        "south": 34.7,
+        "east": -144.9,
+        "west": -145.0
+      },
+      "priority": "medium",
+      "notes": "Near shipping lanes"
+    }
+  ],
+  "hyperspectral_config": {
+    "spectral_bands": 224,
+    "wavelength_range": [400, 2500],
+    "spatial_resolution_m": 0.5,
+    "scan_width_m": 100,
+    "integration_time_ms": 10
+  },
+  "plastic_signatures": {
+    "PET": {
+      "name": "Polyethylene Terephthalate",
+      "common_items": ["bottles", "containers"],
+      "key_wavelengths": [1660, 1720, 1410],
+      "density_kg_m3": 1380
+    },
+    "HDPE": {
+      "name": "High-Density Polyethylene",
+      "common_items": ["milk jugs", "detergent bottles"],
+      "key_wavelengths": [1460, 1370, 2310],
+      "density_kg_m3": 960
+    },
+    "PVC": {
+      "name": "Polyvinyl Chloride",
+      "common_items": ["pipes", "packaging"],
+      "key_wavelengths": [1430, 1250, 2340],
+      "density_kg_m3": 1400
+    },
+    "LDPE": {
+      "name": "Low-Density Polyethylene",
+      "common_items": ["plastic bags", "film"],
+      "key_wavelengths": [1465, 1375, 2320],
+      "density_kg_m3": 920
+    },
+    "PP": {
+      "name": "Polypropylene",
+      "common_items": ["food containers", "caps"],
+      "key_wavelengths": [1455, 1375, 2330],
+      "density_kg_m3": 905
+    },
+    "PS": {
+      "name": "Polystyrene",
+      "common_items": ["styrofoam", "disposable cups"],
+      "key_wavelengths": [1450, 1600, 1945],
+      "density_kg_m3": 1050
+    },
+    "FISHING_NET": {
+      "name": "Fishing Nets (Nylon)",
+      "common_items": ["ghost nets", "fishing lines"],
+      "key_wavelengths": [1640, 1540, 2280],
+      "density_kg_m3": 1140
+    }
+  },
+  "detection_thresholds": {
+    "confidence_minimum": 0.7,
+    "size_categories": {
+      "micro": {"max_mm": 5},
+      "meso": {"min_mm": 5, "max_mm": 25},
+      "macro": {"min_mm": 25, "max_mm": 1000},
+      "mega": {"min_mm": 1000}
+    }
+  },
+  "cleanup_vessels": [
+    {
+      "id": "CLEANUP_VESSEL_01",
+      "name": "Ocean Cleaner Alpha",
+      "type": "autonomous_skimmer",
+      "capacity_kg": 5000,
+      "speed_knots": 8,
+      "home_port": [34.88, -145.12]
+    },
+    {
+      "id": "CLEANUP_VESSEL_02",
+      "name": "Debris Collector Beta",
+      "type": "crewed_vessel",
+      "capacity_kg": 10000,
+      "speed_knots": 12,
+      "home_port": [34.85, -145.15]
+    }
+  ],
+  "mission_parameters": {
+    "survey_altitude_m": 50,
+    "scan_speed_ms": 8,
+    "scan_overlap": 0.3,
+    "max_wind_speed_ms": 15,
+    "max_wave_height_m": 3,
+    "mission_duration_hours": 4,
+    "data_transmission_interval_s": 300
+  },
+  "ai_model_config": {
+    "model_path": "models/hyperspectral_plastic_detector.pth",
+    "input_bands": 224,
+    "plastic_classes": 10,
+    "confidence_threshold": 0.7,
+    "batch_size": 32
+  }
+}
