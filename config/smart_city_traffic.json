@@ -1,0 +1,255 @@
+{
+  "city_name": "Demo Smart City",
+  "road_segments": [
+    {
+      "id": "SEG_001",
+      "name": "Main Street North",
+      "start": [37.7749, -122.4194],
+      "end": [37.7759, -122.4194],
+      "start_node": "NODE_1",
+      "end_node": "NODE_2",
+      "lanes": 4,
+      "speed_limit": 50,
+      "connections": ["SEG_002", "SEG_003", "SEG_004"],
+      "traffic_lights": ["TL_001", "TL_002"]
+    },
+    {
+      "id": "SEG_002",
+      "name": "Main Street South",
+      "start": [37.7739, -122.4194],
+      "end": [37.7749, -122.4194],
+      "start_node": "NODE_3",
+      "end_node": "NODE_1",
+      "lanes": 4,
+      "speed_limit": 50,
+      "connections": ["SEG_001", "SEG_005", "SEG_006"],
+      "traffic_lights": ["TL_003"]
+    },
+    {
+      "id": "SEG_003",
+      "name": "First Avenue East",
+      "start": [37.7749, -122.4194],
+      "end": [37.7749, -122.4184],
+      "start_node": "NODE_1",
+      "end_node": "NODE_4",
+      "lanes": 3,
+      "speed_limit": 40,
+      "connections": ["SEG_001", "SEG_007", "SEG_008"],
+      "traffic_lights": ["TL_001"]
+    },
+    {
+      "id": "SEG_004",
+      "name": "First Avenue West",
+      "start": [37.7749, -122.4194],
+      "end": [37.7749, -122.4204],
+      "start_node": "NODE_1",
+      "end_node": "NODE_5",
+      "lanes": 3,
+      "speed_limit": 40,
+      "connections": ["SEG_001", "SEG_009", "SEG_010"],
+      "traffic_lights": ["TL_001"]
+    },
+    {
+      "id": "SEG_005",
+      "name": "Second Avenue East",
+      "start": [37.7739, -122.4194],
+      "end": [37.7739, -122.4184],
+      "start_node": "NODE_3",
+      "end_node": "NODE_6",
+      "lanes": 2,
+      "speed_limit": 35,
+      "connections": ["SEG_002", "SEG_011"],
+      "traffic_lights": ["TL_003"]
+    },
+    {
+      "id": "SEG_006",
+      "name": "Second Avenue West",
+      "start": [37.7739, -122.4194],
+      "end": [37.7739, -122.4204],
+      "start_node": "NODE_3",
+      "end_node": "NODE_7",
+      "lanes": 2,
+      "speed_limit": 35,
+      "connections": ["SEG_002", "SEG_012"],
+      "traffic_lights": ["TL_003"]
+    },
+    {
+      "id": "SEG_007",
+      "name": "Market Street North",
+      "start": [37.7759, -122.4184],
+      "end": [37.7769, -122.4184],
+      "start_node": "NODE_8",
+      "end_node": "NODE_9",
+      "lanes": 4,
+      "speed_limit": 45,
+      "connections": ["SEG_003", "SEG_013"],
+      "traffic_lights": ["TL_004"]
+    },
+    {
+      "id": "SEG_008",
+      "name": "Market Street South",
+      "start": [37.7739, -122.4184],
+      "end": [37.7749, -122.4184],
+      "start_node": "NODE_6",
+      "end_node": "NODE_4",
+      "lanes": 4,
+      "speed_limit": 45,
+      "connections": ["SEG_003", "SEG_005"],
+      "traffic_lights": ["TL_005"]
+    },
+    {
+      "id": "SEG_009",
+      "name": "Broadway North",
+      "start": [37.7759, -122.4204],
+      "end": [37.7769, -122.4204],
+      "start_node": "NODE_10",
+      "end_node": "NODE_11",
+      "lanes": 3,
+      "speed_limit": 40,
+      "connections": ["SEG_004", "SEG_014"],
+      "traffic_lights": ["TL_006"]
+    },
+    {
+      "id": "SEG_010",
+      "name": "Broadway South",
+      "start": [37.7739, -122.4204],
+      "end": [37.7749, -122.4204],
+      "start_node": "NODE_7",
+      "end_node": "NODE_5",
+      "lanes": 3,
+      "speed_limit": 40,
+      "connections": ["SEG_004", "SEG_006"],
+      "traffic_lights": ["TL_007"]
+    },
+    {
+      "id": "SEG_011",
+      "name": "Park Avenue",
+      "start": [37.7739, -122.4184],
+      "end": [37.7729, -122.4184],
+      "start_node": "NODE_6",
+      "end_node": "NODE_12",
+      "lanes": 2,
+      "speed_limit": 30,
+      "connections": ["SEG_005", "SEG_008"],
+      "traffic_lights": []
+    },
+    {
+      "id": "SEG_012",
+      "name": "Oak Street",
+      "start": [37.7739, -122.4204],
+      "end": [37.7729, -122.4204],
+      "start_node": "NODE_7",
+      "end_node": "NODE_13",
+      "lanes": 2,
+      "speed_limit": 30,
+      "connections": ["SEG_006", "SEG_010"],
+      "traffic_lights": []
+    },
+    {
+      "id": "SEG_013",
+      "name": "Highway 101 On-Ramp",
+      "start": [37.7769, -122.4184],
+      "end": [37.7779, -122.4184],
+      "start_node": "NODE_9",
+      "end_node": "NODE_14",
+      "lanes": 2,
+      "speed_limit": 65,
+      "connections": ["SEG_007"],
+      "traffic_lights": []
+    },
+    {
+      "id": "SEG_014",
+      "name": "Highway 280 On-Ramp",
+      "start": [37.7769, -122.4204],
+      "end": [37.7779, -122.4204],
+      "start_node": "NODE_11",
+      "end_node": "NODE_15",
+      "lanes": 2,
+      "speed_limit": 65,
+      "connections": ["SEG_009"],
+      "traffic_lights": []
+    }
+  ],
+  "traffic_lights": [
+    {
+      "id": "TL_001",
+      "location": [37.7749, -122.4194],
+      "intersection": "Main St & First Ave",
+      "default_phase": "NS_green",
+      "default_duration": 45,
+      "phases": ["NS_green", "EW_green", "NS_yellow", "EW_yellow"]
+    },
+    {
+      "id": "TL_002",
+      "location": [37.7759, -122.4194],
+      "intersection": "Main St North & Third Ave",
+      "default_phase": "NS_green",
+      "default_duration": 40,
+      "phases": ["NS_green", "EW_green", "NS_yellow", "EW_yellow"]
+    },
+    {
+      "id": "TL_003",
+      "location": [37.7739, -122.4194],
+      "intersection": "Main St & Second Ave",
+      "default_phase": "NS_green",
+      "default_duration": 35,
+      "phases": ["NS_green", "EW_green", "NS_yellow", "EW_yellow"]
+    },
+    {
+      "id": "TL_004",
+      "location": [37.7759, -122.4184],
+      "intersection": "Market St North & Third Ave",
+      "default_phase": "NS_green",
+      "default_duration": 50,
+      "phases": ["NS_green", "EW_green", "NS_yellow", "EW_yellow"]
+    },
+    {
+      "id": "TL_005",
+      "location": [37.7749, -122.4184],
+      "intersection": "Market St & First Ave",
+      "default_phase": "NS_green",
+      "default_duration": 45,
+      "phases": ["NS_green", "EW_green", "NS_yellow", "EW_yellow"]
+    },
+    {
+      "id": "TL_006",
+      "location": [37.7759, -122.4204],
+      "intersection": "Broadway North & Third Ave",
+      "default_phase": "NS_green",
+      "default_duration": 40,
+      "phases": ["NS_green", "EW_green", "NS_yellow", "EW_yellow"]
+    },
+    {
+      "id": "TL_007",
+      "location": [37.7749, -122.4204],
+      "intersection": "Broadway & First Ave",
+      "default_phase": "NS_green",
+      "default_duration": 40,
+      "phases": ["NS_green", "EW_green", "NS_yellow", "EW_yellow"]
+    }
+  ],
+  "monitoring_zones": [
+    {
+      "name": "Downtown Core",
+      "bounds": [[37.7735, -122.4210], [37.7765, -122.4178]],
+      "priority": "high"
+    },
+    {
+      "name": "Highway Access",
+      "bounds": [[37.7765, -122.4210], [37.7785, -122.4178]],
+      "priority": "medium"
+    }
+  ],
+  "incident_hotspots": [
+    {
+      "location": [37.7749, -122.4194],
+      "radius": 100,
+      "description": "Main intersection - high accident rate"
+    },
+    {
+      "location": [37.7769, -122.4184],
+      "radius": 150,
+      "description": "Highway on-ramp merge zone"
+    }
+  ]
+}
