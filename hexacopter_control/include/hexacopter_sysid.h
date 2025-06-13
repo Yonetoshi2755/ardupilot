@@ -44,6 +44,11 @@ public:
     const Vector3f& get_damping_coefficients() const { return _damping_coeff; }
     float get_thrust_coefficient() const { return _thrust_coeff; }
     float get_torque_coefficient() const { return _torque_coeff; }
+    float get_vehicle_mass() const { return _vehicle_mass; }
+    
+    // Compute thrust to vertical acceleration/velocity
+    float compute_thrust_acceleration(float total_thrust) const;
+    Vector3f compute_expected_acceleration(const float motor_commands[6], const Quaternion& attitude) const;
     
     // Get estimation quality metrics
     uint32_t get_sample_count() const { return _sample_count; }
@@ -69,12 +74,14 @@ private:
     AP_Float _test_throttle_max;
     AP_Float _test_duration;
     AP_Int8 _test_axis;  // 0=roll, 1=pitch, 2=yaw
+    AP_Float _vehicle_mass;  // Vehicle mass in kg
 #else
     int8_t _enable;
     float _test_throttle_min;
     float _test_throttle_max;
     float _test_duration;
     int8_t _test_axis;  // 0=roll, 1=pitch, 2=yaw
+    float _vehicle_mass;  // Vehicle mass in kg
 #endif
 
     // State
@@ -90,6 +97,8 @@ private:
         Vector3f angular_accel;
         Vector3f motor_commands;
         float throttle;
+        Vector3f acceleration;  // Body frame acceleration
+        float vertical_accel;   // World frame vertical acceleration
     };
     Sample _samples[MAX_SAMPLES];
     uint16_t _sample_count;

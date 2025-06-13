@@ -109,15 +109,13 @@ Vector3f EKF_AttitudeVelocityAdaptive::compute_thrust_acceleration(const float m
     }
     
     float thrust_coeff = _sysid->get_thrust_coefficient();
+    float mass = _sysid->get_vehicle_mass();
     float total_thrust = 0;
     
     // Sum thrust from all motors
     for (int i = 0; i < 6; i++) {
         total_thrust += thrust_coeff * motors[i] * motors[i];
     }
-    
-    // Assume 2kg hexacopter mass (should be a parameter)
-    float mass = 2.0f;
     
     // Thrust is along body Z axis (down)
     return Vector3f(0, 0, -total_thrust / mass);

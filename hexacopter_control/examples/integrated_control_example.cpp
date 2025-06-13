@@ -3,6 +3,7 @@
  * Demonstrates how identified parameters flow through the system
  */
 
+#include <cstdio>
 #include "hexacopter_sysid.h"
 #include "ekf_attitude_velocity_adaptive.h"
 #include "velocity_feedback_controller.h"

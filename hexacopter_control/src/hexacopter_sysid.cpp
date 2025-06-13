@@ -46,6 +46,7 @@ const AP_Param::GroupInfo HexacopterSysID::var_info[] = {
     AP_GROUPINFO("THR_MAX", 2, HexacopterSysID, _test_throttle_max, 0.5f),
     AP_GROUPINFO("DURATION", 3, HexacopterSysID, _test_duration, 20.0f),
     AP_GROUPINFO("TEST_AXIS", 4, HexacopterSysID, _test_axis, 0),
+    AP_GROUPINFO("MASS", 5, HexacopterSysID, _vehicle_mass, 2.0f),
     AP_GROUPEND
 #else
     {}  // Empty for standalone
@@ -80,6 +81,7 @@ HexacopterSysID::HexacopterSysID() :
     _test_throttle_max = 0.5f;
     _test_duration = 20.0f;
     _test_axis = 0;
+    _vehicle_mass = 2.0f;
 }
 
 void HexacopterSysID::init()
@@ -178,6 +180,10 @@ void HexacopterSysID::collect_sample(const Vector3f& gyro, const Vector3f& motor
     sample.angular_rate = gyro;
     sample.motor_commands = motor_cmd;
     sample.throttle = throttle;
+    
+    // Calculate expected thrust acceleration
+    float total_thrust = 6.0f * _thrust_coeff * throttle * throttle;
+    sample.vertical_accel = total_thrust / _vehicle_mass - GRAVITY_MSS;
     
     if (_sample_count > 0) {
         float dt = (sample.timestamp_ms - _samples[_sample_count-1].timestamp_ms) * 0.001f;
@@ -328,8 +334,8 @@ void HexacopterSysID::log_identification_data()
     const Sample& sample = _samples[_sample_count-1];
     
     AP::logger().WriteStreaming("SYID",
-        "TimeUS,Seq,GyrX,GyrY,GyrZ,AccX,AccY,AccZ,CmdR,CmdP,CmdY,Thr,Ixx,Iyy,Izz",
-        "QBffffffffffff",
+        "TimeUS,Seq,GyrX,GyrY,GyrZ,AccX,AccY,AccZ,CmdR,CmdP,CmdY,Thr,Ixx,Iyy,Izz,Mass,VAccel",
+        "QBfffffffffffff",
         AP_HAL_micros64(),
         (uint8_t)_test_sequence,
         sample.angular_rate.x,
@@ -344,7 +350,37 @@ void HexacopterSysID::log_identification_data()
         sample.throttle,
         _inertia_matrix.a.x,
         _inertia_matrix.b.y,
-        _inertia_matrix.c.z
+        _inertia_matrix.c.z,
+        _vehicle_mass,
+        sample.vertical_accel
     );
 #endif
+}
+
+float HexacopterSysID::compute_thrust_acceleration(float total_thrust) const
+{
+    return total_thrust / _vehicle_mass;
+}
+
+Vector3f HexacopterSysID::compute_expected_acceleration(const float motor_commands[6], const Quaternion& attitude) const
+{
+    // Calculate total thrust from all motors
+    float total_thrust = 0;
+    for (int i = 0; i < 6; i++) {
+        total_thrust += _thrust_coeff * motor_commands[i] * motor_commands[i];
+    }
+    
+    // Body frame thrust vector (assuming thrust is along body Z-axis)
+    Vector3f body_thrust(0, 0, -total_thrust);
+    
+    // Rotate to world frame
+    Matrix3f dcm;
+    attitude.rotation_matrix(dcm);
+    Vector3f world_thrust = dcm * body_thrust;
+    
+    // Add gravity compensation
+    Vector3f acceleration = world_thrust / _vehicle_mass;
+    acceleration.z += GRAVITY_MSS;
+    
+    return acceleration;
 }

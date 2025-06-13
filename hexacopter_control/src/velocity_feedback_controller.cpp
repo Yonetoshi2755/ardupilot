@@ -291,8 +291,8 @@ void VelocityFeedbackController::rate_control(const Vector3f& rate_current, floa
     // Total torque command
     Vector3f torque_cmd = torque_p + torque_i + torque_d + torque_ff;
     
-    // Thrust command (simplified - assumes hover thrust)
-    float mass = 2.0f;  // kg (typical hexacopter)
+    // Thrust command using identified mass
+    float mass = _sysid ? _sysid->get_vehicle_mass() : 2.0f;  // Use identified mass or default
     float hover_thrust = mass * GRAVITY_MSS;
     float thrust_cmd = hover_thrust;  // Base thrust
     
@@ -365,8 +365,8 @@ Quaternion VelocityFeedbackController::velocity_to_attitude_setpoint(const Vecto
 void VelocityFeedbackController::mix_motors(const Vector3f& thrust_body, const Vector3f& torque_body)
 {
     // Get system parameters
-    float thrust_coeff = _sysid->get_thrust_coefficient();
-    float torque_coeff = _sysid->get_torque_coefficient();
+    float thrust_coeff = _sysid ? _sysid->get_thrust_coefficient() : 1.5e-5f;
+    float torque_coeff = _sysid ? _sysid->get_torque_coefficient() : 3.0e-7f;
     
     // Motor mixing matrix for hexacopter X configuration
     // Each motor contributes to thrust and torques
@@ -526,8 +526,8 @@ void VelocityFeedbackController::update_adaptive_gains()
     
     // Update velocity controller gains based on thrust characteristics
     // Maximum acceleration = total_thrust / mass
+    float mass = _sysid->get_vehicle_mass();
     float max_thrust = 6.0f * thrust_coeff * 1000.0f * 1000.0f;  // 6 motors at max
-    float mass = 2.0f;  // kg
     float max_accel = max_thrust / mass;
     
     // Velocity P gain scales with available acceleration
